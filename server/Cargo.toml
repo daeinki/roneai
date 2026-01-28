@@ -1,0 +1,25 @@
+[package]
+name = "roneai-mcp-server"
+version = "0.1.0"
+edition = "2021"
+authors = ["Samsung Electronics Co., Ltd"]
+description = "Rust reimplementation of the ONEAI MCP server API facade"
+license = "Apache-2.0"
+
+[lib]
+name = "roneai_mcp_server"
+path = "src/lib.rs"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+thiserror = "1"
+log = "0.4"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "signal", "time"] }
+tokio-util = { version = "0.7", features = ["full"] }
+hyper = { version = "1", features = ["full"] }
+axum = "0.8"
+tower = "0.5"
+hyper-util = { version = "0.1", features = ["server", "http1", "http2", "tokio", "service"] }
+serde_json = "1"
+rmcp = { path = "../../rust-sdk/crates/rmcp", features = ["server", "transport-streamable-http-server", "transport-async-rw", "transport-io"] }
+
