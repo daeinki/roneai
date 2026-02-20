@@ -21,7 +21,7 @@ use log::error;
 use hyper_util::{rt::{TokioExecutor, TokioIo}, server::conn::auto::Builder as AutoBuilder, service::TowerToHyperService};
 use serde_json;
 use rmcp::{
-    model::{self, AnnotateAble, CallToolRequestParams, CallToolResult, JsonObject, ListPromptsResult, ListResourceTemplatesResult, ListResourcesResult, ListToolsResult, PaginatedRequestParams, Prompt, RawContent, RawResource, RawResourceTemplate, Resource, ResourceTemplate, ServerCapabilities, ServerInfo, Tool},
+    model::{AnnotateAble, CallToolRequestParams, CallToolResult, JsonObject, ListPromptsResult, ListResourceTemplatesResult, ListResourcesResult, ListToolsResult, PaginatedRequestParams, Prompt, RawContent, RawResource, RawResourceTemplate, Resource, ResourceTemplate, ServerCapabilities, ServerInfo, Tool},
     transport::streamable_http_server::{session::local::LocalSessionManager, StreamableHttpServerConfig, StreamableHttpService},
     ServiceExt,
 };
@@ -415,6 +415,7 @@ impl OneaiServerHandler {
                 input_schema: Arc::new(JsonObject::new()),
                 output_schema: None,
                 annotations: None,
+                execution: None,
                 icons: None,
                 meta: None,
             })
